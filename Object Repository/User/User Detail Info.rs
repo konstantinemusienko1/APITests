@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
-   <description>Login to the app</description>
-   <name>Login</name>
+   <description>Get user info</description>
+   <name>User Detail Info</name>
    <tag></tag>
-   <elementGuidId>4e5f1fb9-b42e-44fa-adae-a2cdf24f8998</elementGuidId>
+   <elementGuidId>8c12bf51-5c8b-4fd3-b692-1cadf26d9880</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
    <httpBody></httpBody>
-   <httpBodyContent>{
-  &quot;text&quot;: &quot;{\n    \&quot;userNameEmail\&quot;: \&quot;konstantine.musienko@itomy.ch\&quot;,\n    \&quot;password\&quot;: \&quot;qwerty\&quot;\n}&quot;,
-  &quot;contentType&quot;: &quot;application/json&quot;,
-  &quot;charset&quot;: &quot;UTF-8&quot;
-}</httpBodyContent>
-   <httpBodyType>text</httpBodyType>
+   <httpBodyContent></httpBodyContent>
+   <httpBodyType></httpBodyType>
    <httpHeaderProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
@@ -20,9 +16,16 @@
       <type>Main</type>
       <value>application/json</value>
    </httpHeaderProperties>
+   <httpHeaderProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>X-EpcApi-ID</name>
+      <type>Main</type>
+      <value>AUTHTOKEN</value>
+   </httpHeaderProperties>
    <migratedVersion>5.4.1</migratedVersion>
-   <restRequestMethod>POST</restRequestMethod>
-   <restUrl>http://m.keen.stage.ingenio.com/api/login?</restUrl>
+   <restRequestMethod>GET</restRequestMethod>
+   <restUrl>http://m.keen.stage.ingenio.com/api/user/userid?</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
@@ -41,16 +44,6 @@ import internal.GlobalVariable as GlobalVariable
 RequestObject request = WSResponseManager.getInstance().getCurrentRequest()
 
 ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
-
-WS.verifyResponseStatusCode(response, 200)
-
-assertThat(response.getStatusCode()).isEqualTo(200)
-
-
-
-def variables = request.getVariables(X-EpcApi-ID)
-def auth_token = variables.get('X-EpcApi-ID')
-
-print ${auth_token}</verificationScript>
+</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>
